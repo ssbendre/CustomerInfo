@@ -1,0 +1,28 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend-pods
+
+        image: ssbendre1/customerinfo:frontend
+
+        ports:
+        - containerPort: 80
+
+        resources:
+          limits:
+            memory: "64M"
+            cpu: "0.125"
